@@ -4,9 +4,6 @@ In this module, we learn how to orchestrate AI workflows using [Kestra](https://
 We start from the context problem that makes generic AI assistants unreliable, and end with autonomous multi-agent systems that can research, reason, and act without a fixed predetermined sequence of steps.
 
 
-Flows: [flows/](flows/)
-
-Each lesson has its own video link at the top. If you'd like to watch them all in order, the [full playlist is here](https://youtube.com/playlist?list=PLEK3H8YwZn1oc6ReY4el9jT-mLlw-hs3r&si=yLtndNW5lhFcVuUJ).
 
 ## Part 1: Using AI in Workflows
 
@@ -20,7 +17,7 @@ Part 2 shows how to use Kestra's AI Copilot to generate and refine flows by desc
 ## Part 3: RAG Workflows
 
 Part 3 shows how to ground AI responses in real data using Retrieval Augmented Generation, so the model works from facts instead of guessing.
-For a deeper dive into RAG and vector search, see [Module 2](../02-vector-search/lessons/06-rag-vector.md).
+For a deeper dive into RAG and vector search, see Module 2.
 
 ## Part 4: Agentic Workflows
 
