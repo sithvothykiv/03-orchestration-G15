@@ -7,17 +7,32 @@ This guide walks you through setting up and running Kestra locally with your spe
 ## Step 1: Export Environment Variables & Secrets
 Kestra reads credentials using environment variables prefixed with `SECRET_`. The values must be base64-encoded. 
 
+### macOS / Linux (bash/zsh)
 Run the following commands in your terminal to export your API keys:
 
 ```bash
 # 1. Export your raw Gemini API Key
-export GEMINI_API_KEY="your-key"
+export GEMINI_API_KEY="AQ.Ab8RN6KecGXjQtXLXuK1RoEKwUEML4xvLyjhb3LxVRd0jKoBsw"
 
 # 2. Base64 encode the Gemini key for Kestra's secret engine
 export SECRET_GEMINI_API_KEY=$(echo -n $GEMINI_API_KEY | base64)
 
 # 3. Base64 encode and export the Tavily Search API key (used for web search workflows)
-export SECRET_TAVILY_API_KEY=$(echo -n "your-key" | base64)
+export SECRET_TAVILY_API_KEY=$(echo -n "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" | base64)
+```
+
+### Windows (PowerShell)
+Run the following commands in PowerShell to export your API keys:
+
+```powershell
+# 1. Export your raw Gemini API Key
+$env:GEMINI_API_KEY="AQ.Ab8RN6KecGXjQtXLXuK1RoEKwUEML4xvLyjhb3LxVRd0jKoBsw"
+
+# 2. Base64 encode the Gemini key for Kestra's secret engine
+$env:SECRET_GEMINI_API_KEY=[Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes($env:GEMINI_API_KEY))
+
+# 3. Base64 encode and export the Tavily Search API key (used for web search workflows)
+$env:SECRET_TAVILY_API_KEY=[Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes("your-key"))
 ```
 
 > [!NOTE]
@@ -50,6 +65,7 @@ Once the containers are running:
 ## Step 4: Import Example Flows
 You can load the predefined flows into Kestra using `curl` directly from your terminal:
 
+### macOS / Linux (bash/zsh)
 ```bash
 # Navigate to the workspace directory
 cd /Users/username/03-orchestration-G15
@@ -58,6 +74,17 @@ cd /Users/username/03-orchestration-G15
 curl -X POST -u 'admin@kestra.io:Admin1234!' http://localhost:8080/api/v1/flows/import -F fileUpload=@flows/1_chat_without_rag.yaml
 curl -X POST -u 'admin@kestra.io:Admin1234!' http://localhost:8080/api/v1/flows/import -F fileUpload=@flows/2_chat_with_rag.yaml
 curl -X POST -u 'admin@kestra.io:Admin1234!' http://localhost:8080/api/v1/flows/import -F fileUpload=@flows/3_rag_with_websearch.yaml
+```
+
+### Windows (PowerShell)
+```powershell
+# Navigate to the workspace directory
+cd C:\path\to\03-orchestration-G15
+
+# Import flow examples using curl.exe
+curl.exe -X POST -u "admin@kestra.io:Admin1234!" http://localhost:8080/api/v1/flows/import -F "fileUpload=@flows/1_chat_without_rag.yaml"
+curl.exe -X POST -u "admin@kestra.io:Admin1234!" http://localhost:8080/api/v1/flows/import -F "fileUpload=@flows/2_chat_with_rag.yaml"
+curl.exe -X POST -u "admin@kestra.io:Admin1234!" http://localhost:8080/api/v1/flows/import -F "fileUpload=@flows/3_rag_with_websearch.yaml"
 ```
 
 ---
