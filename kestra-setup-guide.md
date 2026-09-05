@@ -12,13 +12,13 @@ Run the following commands in your terminal to export your API keys:
 
 ```bash
 # 1. Export your raw Gemini API Key
-export GEMINI_API_KEY="AQ.Ab8RN6KecGXjQtXLXuK1RoEKwUEML4xvLyjhb3LxVRd0jKoBsw"
+export GEMINI_API_KEY="your-key"
 
 # 2. Base64 encode the Gemini key for Kestra's secret engine
 export SECRET_GEMINI_API_KEY=$(echo -n $GEMINI_API_KEY | base64)
 
 # 3. Base64 encode and export the Tavily Search API key (used for web search workflows)
-export SECRET_TAVILY_API_KEY=$(echo -n "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" | base64)
+export SECRET_TAVILY_API_KEY=$(echo -n "your-key" | base64)
 ```
 
 ### Windows (PowerShell)
@@ -26,7 +26,7 @@ Run the following commands in PowerShell to export your API keys:
 
 ```powershell
 # 1. Export your raw Gemini API Key
-$env:GEMINI_API_KEY="AQ.Ab8RN6KecGXjQtXLXuK1RoEKwUEML4xvLyjhb3LxVRd0jKoBsw"
+$env:GEMINI_API_KEY="your-key"
 
 # 2. Base64 encode the Gemini key for Kestra's secret engine
 $env:SECRET_GEMINI_API_KEY=[Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes($env:GEMINI_API_KEY))
